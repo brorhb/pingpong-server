@@ -1,0 +1,37 @@
+{
+  "name": "ecotron",
+  "version": "0.0.0",
+  "description": "Lesebruker",
+  "dependencies": {
+    "socket.io": "^2.1.1",
+    "vue": "^2.5.13"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "browserify": "^15.2.0",
+    "budo": "^11.2.0",
+    "envify": "^4.1.0",
+    "git-rev-sync": "^1.11.1",
+    "npm-run-all": "^4.1.2",
+    "replace": "^0.3.0",
+    "uglify-js": "^3.3.13",
+    "vueify": "^9.4.1",
+    "watchify": "^3.11.0"
+  },
+  "scripts": {
+    "//": "--- DEVELOPMENT ---",
+    "dev": "budo index.js:bundle.js -d www --live -p 9999 -- -t vueify",
+    "start": "npm-run-all -p watch:*",
+    "watch:check": "watchify index.js --poll -t vueify -o www/bundle.js",
+    "watch:serve": "budo -d www --live -p 9988 --wg='www/*.{html,css,js}' --poll",
+    "///": "--- PRODUCTION ---",
+    "build": "npm run clean && npm run copy && npm run bundle && npm run add-git-hash",
+    "clean": "rm -rf dist",
+    "copy": "cp -r www dist && rm -f dist/bundle.js",
+    "add-git-hash": "node add-git-hash.js",
+    "bundle": "NODE_ENV=production browserify index.js -g envify -t vueify | uglifyjs > dist/bundle.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

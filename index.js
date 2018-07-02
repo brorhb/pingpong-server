@@ -1,12 +1,7 @@
-const express = require('express')
+const app = require('express')()
 const ioHook = require('iohook')
 var game = require('./game.js')
-var app = express()
-var WebSocketServer = require('websocket').server
-
-var serverConfig = {httpServer: app, path: '/', keepalive: true}
-
-var ws = new WebSocketServer(serverConfig)
+var socket = require('socket.io')(app)
 
 app.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Origin', 'http://localhost:9988')
@@ -28,12 +23,12 @@ ioHook.on('keyup', (key) => {
   }
 })
 
-ws.on('connect', (req) => {
-  console.log(req)
+socket.on('connection', (io) => {
+  io.emit('score', game.score)
 })
 
-app.get('/', (req, res) => {
-  ws.mount(serverConfig)
-})
+/* app.get('/', (req, res) => {
+
+}) */
 
 app.listen(8080)

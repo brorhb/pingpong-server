@@ -1,0 +1,254 @@
+.logo {
+  white-space: pre;
+  background-color: #454d54;
+  border-radius: 3px;
+  padding-right: 10px;
+  padding-left: 10px;
+  height: 2.4rem;
+  line-height: 2.7rem;
+  font-size: 1.4rem;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+#app {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+}
+
+#appBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+input {
+  font-family: Roboto, sans-serif;
+}
+
+header { flex: none; }
+main {
+  flex: 1;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+nav {
+  flex: none;
+  display: flex;
+  flex-direction: row;
+}
+
+.menu-item {
+  text-decoration: none;
+  color: black;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  width: 100%;
+  display: block;
+  text-align: center;
+}
+
+.menu-item-active, .menu-item:hover {
+  background-color: #999;
+  color: white;
+}
+
+.menu-item-active:hover {
+  background-color: #777;
+}
+
+@media (min-width: 768px) {
+  #appBody { flex-direction: row; }
+  nav { flex: 0 0 12em; display: block; }
+  .menu-item { text-align: initial; }
+}
+
+@keyframes fadein {
+  from { opacity: 0 }
+  to { opacity: 1 }
+}
+.pagesearch{
+  width: 300px;
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  transition: all .3s ease;
+  height: 2.5rem;
+}
+.pagesearch:focus{
+  width:500px;
+  outline: none;
+}
+.pagesearch:hover{
+  width:500px;
+  outline: none;
+}
+.pagesearch_button{
+  position: absolute;
+  right: -8px;
+  top: 12px;
+  transform: translateY(-50%);
+  display: initial;
+  width: 24px;
+  height: 24px;
+  padding: 5px;
+  cursor: pointer;
+  background-color: #3D5F84;
+  border: 1px solid #fff;
+  border-radius: 100%;
+  color: #ffffff;
+}
+.pagesearch_icon{
+  padding-top: 3px;
+  padding-left:3px;
+}
+
+
+body{
+  font-size: 14px;
+  line-height: normal;
+  background-color: #f9f9fb;
+}
+@media (min-width: 1650px) {
+  .productdoc {
+    position: absolute;
+    min-width: 400px;
+    max-width: 1000px;
+  }
+
+}
+@media (max-width: 1640px) {
+  .productdoc {
+    position: none;
+    max-width: 1000px;
+  }
+
+}
+.filterboxes{
+  width: 300px;
+  height: 2.5rem;
+  margin-left: 1rem;
+}
+@media (max-width: 60rem) {
+  .filterboxes{
+    width: 100%;
+    margin-left: 0rem;
+    margin-bottom: 0.2rem;
+  }
+}
+@media (max-width: 48em) {
+ /* .pagesearch{
+    width: 100%;
+  }*/
+  .pagesearch_outerbox{
+    width:100%;
+  }
+}
+/*for data tables highlight on rows*/
+tbody tr:hover {
+  background-color: #F7F7F7;
+}
+/*mobile table to card view*/
+@media screen and (max-width: 60rem) {
+
+  .mtable .table { border: 0; padding-top: 0}
+
+  .mtable .table thead { display: none; }
+
+  .mtable .table .tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    position: relative;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+  }
+
+  .mtable .table .td {
+    /*border-bottom: 1px solid #ddd !important;*/
+    border-bottom: 0px !important;
+    display: flex;
+   /* font-size: .8em;*/
+    height: 100% !important;
+   /* text-align: right;*/
+  }
+
+  .mtable .table .td:before {
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+ /* .dl-button:before {
+    content: attr(data-label);
+!*    float: left;*!
+   !* font-weight: bold;
+    text-transform: uppercase;*!
+  }*/
+  .mtable .table .td:last-child { border-bottom: 0; }
+  .mtable .checkbox {
+    position:absolute;
+    top: 0;
+    right: 1rem;
+    z-index: 1;
+  }
+  .mtable .label{
+    position: relative;
+    margin-left: auto;
+    padding-right: 24px;
+  }
+  .laban {
+    position: relative;
+    float: right;
+  }
+  .sds-button {
+    position: absolute;
+    right: 1rem;
+    bottom: 1rem;
+  }
+  .sps-button{
+    position: absolute;
+    right: 3.5rem;
+    bottom: 1rem;
+  }
+  .mtable .eco-link{
+    font-size: 1.2em;
+  }
+/*  .sds-button a{
+    position:absolute;
+    bottom: 20px;
+    right: 40px;
+    float: right;
+    justify-content: space-between;
+
+  }*/
+
+}
+.iframe {
+  height: 99%;
+  width: 100%;
+  border: none;
+}
+.pagesearch_button_main{
+  position: absolute;
+  right: -1px;
+  top: 8px;
+  transform: translateY(-50%);
+  display: initial;
+  width: 60px;
+  height: 30px;
+  cursor: pointer;
+  background-color: #3D5F84;
+  /* border: 1px solid #fff; */
+  /* border-radius: 100%; */
+  color: #ffffff;
+  text-align: -webkit-center;
+  padding-top: 10px;
+}
+@media screen and (min-width: 60em) {
+  .sticky-tablebar-l {
+    position: sticky;
+    top: 28px;
+    background-color: rgb(249, 249, 251);
+    z-index: 1;
+  }
+}

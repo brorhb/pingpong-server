@@ -3,3 +3,4 @@ yarn.lock
 .DS_Store
 .gitignore.swp
 frontend/node_modules
+iohook-crash.log

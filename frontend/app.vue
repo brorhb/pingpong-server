@@ -7,12 +7,19 @@
 </template>
 
 <script>
-import socket from 'socket.io-client'
+import io from 'socket.io-client'
+const socket = io('http://localhost:8080/')
 
 export default {
   data: () => ({
     player1: false,
     player2: false
-  })
+  }),
+  created () {
+    socket.on('score', (data) => {
+      this.player1 = data.player1
+      this.player2 = data.player2
+    })
+  }
 }
 </script>

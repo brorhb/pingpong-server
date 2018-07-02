@@ -1,15 +1,21 @@
-const app = require('express')()
+var app = require('http').createServer(handler)
 const ioHook = require('iohook')
-var game = require('./game.js')
-var socket = require('socket.io')(app)
+var io = require('socket.io')(app)
 
-app.use(function (req, res, next) {
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:9988')
-  res.setHeader('Access-Control-Allow-Methods', 'GET')
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type')
-  res.setHeader('Access-Control-Allow-Credentials', true)
-  next()
-})
+var game = require('./game.js')
+
+function handler (req, res) {
+  fs.readFile(__dirname + '/index.html',
+  function (err, data) {
+    if (err) {
+      res.writeHead(500);
+      return res.end('Error loading index.html');
+    }
+
+    res.writeHead(200);
+    res.end(data);
+  });
+}
 
 ioHook.start()
 ioHook.on('keyup', (key) => {
@@ -21,14 +27,11 @@ ioHook.on('keyup', (key) => {
   } else if (key.rawcode === 15) {
     game.givePoint(2)
   }
-})
-
-socket.on('connection', (io) => {
   io.emit('score', game.score)
 })
 
-/* app.get('/', (req, res) => {
-
-}) */
+io.on('connection', (io) => {
+  console.log('connection')
+})
 
 app.listen(8080)

@@ -11,7 +11,6 @@ function handler (req, res) {
       res.writeHead(500);
       return res.end('Error loading index.html');
     }
-
     res.writeHead(200);
     res.end(data);
   });
@@ -28,6 +27,8 @@ ioHook.on('keyup', (key) => {
     game.givePoint(2)
   }
   io.emit('score', game.score)
+  io.emit('setWinner', game.setWinner)
+  io.emit('gameWinner', game.gameWinner)
 })
 
 io.on('connection', (io) => {

@@ -17,8 +17,10 @@ var socket = (0, _socket2.default)('http://localhost:8080/');
 exports.default = {
   data: function data() {
     return {
-      player1: false,
-      player2: false
+      player1: 0,
+      player2: 0,
+      setWinner: '',
+      gameWinner: ''
     };
   },
   created: function created() {
@@ -28,13 +30,20 @@ exports.default = {
       _this.player1 = data.player1;
       _this.player2 = data.player2;
     });
+    socket.on('setWinner', function (data) {
+      _this.setWinner = data[data.length - 1];
+    });
+    socket.on('gameWinner', function (data) {
+      console.log(data);
+      _this.gameWinner = data;
+    });
   }
 };
 })()
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"overflow-hidden",attrs:{"id":"app"}},[_c('h1',[_vm._v("Pingpongscore - Live")]),_vm._v(" "),_c('span',[_vm._v("Player 1: "+_vm._s(_vm.player1))]),_vm._v(" "),_c('span',[_vm._v("Player 2: "+_vm._s(_vm.player2))])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"overflow-hidden",attrs:{"id":"app"}},[_c('h1',[_vm._v("Pingpongscore - Live")]),_vm._v(" "),_c('span',[_vm._v("Player 1: "+_vm._s(_vm.player1))]),_vm._v(" "),_c('span',[_vm._v("Player 2: "+_vm._s(_vm.player2))]),_vm._v(" "),_c('span',[_vm._v("Set winner: "+_vm._s(_vm.setWinner))]),_vm._v(" "),_c('h3',[_vm._v(_vm._s(_vm.gameWinner))])])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)

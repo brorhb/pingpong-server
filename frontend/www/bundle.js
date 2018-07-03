@@ -19,7 +19,7 @@ exports.default = {
     return {
       player1: 0,
       player2: 0,
-      setWinner: '',
+      setWinner: [],
       gameWinner: ''
     };
   },
@@ -31,7 +31,7 @@ exports.default = {
       _this.player2 = data.player2;
     });
     socket.on('setWinner', function (data) {
-      _this.setWinner = data[data.length - 1];
+      _this.setWinner = data;
     });
     socket.on('gameWinner', function (data) {
       console.log(data);
@@ -43,16 +43,16 @@ exports.default = {
 if (module.exports.__esModule) module.exports = module.exports.default
 var __vue__options__ = (typeof module.exports === "function"? module.exports.options: module.exports)
 if (__vue__options__.functional) {console.error("[vueify] functional components are not supported and should be defined in plain js files using render functions.")}
-__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"overflow-hidden",attrs:{"id":"app"}},[_c('h1',[_vm._v("Pingpongscore - Live")]),_vm._v(" "),_c('span',[_vm._v("Player 1: "+_vm._s(_vm.player1))]),_vm._v(" "),_c('span',[_vm._v("Player 2: "+_vm._s(_vm.player2))]),_vm._v(" "),_c('span',[_vm._v("Set winner: "+_vm._s(_vm.setWinner))]),_vm._v(" "),_c('h3',[_vm._v(_vm._s(_vm.gameWinner))])])}
+__vue__options__.render = function render () {var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;return _c('div',{staticClass:"overflow-hidden flex items-center pt5 bg-near-white",attrs:{"id":"app"}},[_c('div',{staticClass:"pa4 bg-white br2 flex outline flex-column w-40 h5"},[_c('h1',[_vm._v("Pingpongscore - Live")]),_vm._v(" "),_c('span',[_vm._v("Player 1: "+_vm._s(_vm.player1))]),_vm._v(" "),_c('span',[_vm._v("Player 2: "+_vm._s(_vm.player2))]),_vm._v(" "),_vm._l((_vm.setWinner),function(winner,index){return _c('div',{key:index},[_c('span',[_vm._v("Winner of set "+_vm._s(index + 1)+": "+_vm._s(winner))])])}),_vm._v(" "),(_vm.gameWinner)?_c('h3',{staticClass:"gold"},[_vm._v(_vm._s(_vm.gameWinner)+" winner winner chicken dinner")]):_vm._e()],2)])}
 __vue__options__.staticRenderFns = []
 if (module.hot) {(function () {  var hotAPI = require("vue-hot-reload-api")
   hotAPI.install(require("vue"), true)
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-c7eb8b1e", __vue__options__)
+    hotAPI.createRecord("data-v-7424a074", __vue__options__)
   } else {
-    hotAPI.reload("data-v-c7eb8b1e", __vue__options__)
+    hotAPI.rerender("data-v-7424a074", __vue__options__)
   }
 })()}
 },{"socket.io-client":37,"vue":53,"vue-hot-reload-api":52}],2:[function(require,module,exports){
